@@ -5,7 +5,7 @@ Nginx docker image with [fancyindex](https://github.com/aperezdc/ngx-fancyindex)
 
 ## Usage
 
-Docker images are available [here.](https://github.com/users/Amir-Ahmad/packages/container/package/nginx-fancyindex). e.g.
+Docker images are available [here](https://github.com/users/Amir-Ahmad/packages/container/package/nginx-fancyindex). e.g.
 
 ```
 docker pull ghcr.io/amir-ahmad/nginx-fancyindex:1.23
