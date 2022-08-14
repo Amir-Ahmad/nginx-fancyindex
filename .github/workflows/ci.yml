@@ -26,6 +26,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Export GITHUB_OWNER_LC
+        run: |
+          echo "GITHUB_OWNER_LC=${GITHUB_OWNER,,}" >>${GITHUB_ENV}
+        env:
+          GITHUB_OWNER: '${{ github.repository_owner }}'  
+
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
@@ -34,5 +40,5 @@ jobs:
             NGINX_VERSION=${{ env.NGINX_VERSION }}
           push: true
           tags: |
-            ghcr.io/${{ github.actor }}/nginx-fancyindex:${{ env.NGINX_VERSION }}
-            ghcr.io/${{ github.actor }}/nginx-fancyindex:latest
+            ghcr.io/${{ env.GITHUB_OWNER_LC }}/nginx-fancyindex:${{ env.NGINX_VERSION }}
+            ghcr.io/${{ env.GITHUB_OWNER_LC }}/nginx-fancyindex:latest
